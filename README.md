@@ -22,19 +22,19 @@ Como executar:
 
 1. Clone o repositório:
 
-git clone https://github.com/gjaniski/teste_tecnico.git
+    git clone https://github.com/gjaniski/teste_tecnico.git
 
 2. Acesse diretório:
 
-cd teste_tecnico
+    cd teste_tecnico
 
 2. Execute o Docker Compose:
 
-docker-compose up --build
+    docker-compose up --build
 
 3. Acesse a aplicação:
 
-http://localhost:4200
+    http://localhost:4200
 
 
 Observações:
