@@ -1,0 +1,78 @@
+.list-container {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 10px;
+    background-color: white;
+    border-radius: 4px;
+}
+
+.list-header-layout {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.list-title {
+    font-size: 1.8em;
+    font-weight: 500;
+    margin: 0;
+}
+
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.full-width-table {
+    width: 100%;
+}
+
+.mat-column-status, .mat-column-actions {
+    text-align: center;
+    max-width: 100px;
+}
+
+.no-customers-message {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #777;
+    padding: 30px;
+    font-size: 1.1em;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+    margin-top: 20px;
+}
+
+.no-customers-message mat-icon {
+    margin-right: 10px;
+    font-size: 1.5em;
+}
+
+.chip-elite {
+  background-color: #00BCD4 !important;
+  color: white !important;
+}
+
+.chip-prime {
+  background-color: #E91E63 !important;
+  color: white !important;
+}
+
+.chip-vip {
+  background-color: #4CAF50 !important;
+  color: white !important;
+}
+
+.chip-premium {
+  background-color: #FF9800 !important;
+  color: white !important;
+}
+
+mat-chip {
+  cursor: default !important;
+  pointer-events: none;
+}

@@ -1,0 +1,104 @@
+<div class="list-container">
+  
+  <header class="list-header-layout">
+    <h2 class="list-title">Clientes</h2>
+    
+    <button mat-flat-button color="primary" [routerLink]="['/customer/new']">
+      <mat-icon>add</mat-icon> Novo Cliente
+    </button>
+  </header>
+
+  <div *ngIf="dataSource.data.length === 0" class="no-customers-message">
+    Nenhum cliente cadastrado.
+  </div>
+
+  <div class="mat-elevation-z2 table-wrapper table-container" *ngIf="dataSource.data.length > 0">
+    
+    <table mat-table [dataSource]="dataSource" [trackBy]="trackByCustomer" class="full-width-table">
+
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> ID </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Nome </th>
+        <td mat-cell *matCellDef="let element"> <strong>{{element.name}}</strong> </td>
+      </ng-container>
+
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef> Email </th>
+        <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef> Status </th>
+        <td mat-cell *matCellDef="let element">
+            
+            <div class="status-chips-container">
+                <mat-chip 
+                    *ngFor="let statusItem of element.status"
+                    [ngClass]="getCustomerStatusClass(statusItem.name)"
+                    class="status-chip-item">
+                    
+                    {{ statusItem.name | titlecase }} 
+                </mat-chip>
+            </div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Ações </th>
+        <td mat-cell *matCellDef="let element">
+            <button mat-icon-button color="primary" [routerLink]="['/customer/edit', element.id]" title="Editar Cliente">
+                <mat-icon>edit</mat-icon> 
+            </button>
+            <button mat-icon-button color="warn" (click)="deleteCustomer(element)" title="Excluir Cliente">
+                <mat-icon>delete</mat-icon>
+            </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+
+  <div class="cards-container" *ngIf="dataSource.data.length > 0">
+    <mat-card *ngFor="let element of dataSource.data">
+      <mat-card-content>
+        <div><strong>ID:</strong> {{ element.id }}</div>
+        <div><strong>Nome:</strong> {{ element.name }}</div>
+        <div><strong>Email:</strong> {{ element.email }}</div>
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <strong>Status:</strong>
+          <div class="status-chips-container" style="margin-top: 4px;">
+              <mat-chip *ngFor="let s of element.status" [ngClass]="getCustomerStatusClass(s.name)" class="status-chip-item">
+                {{ s.name | titlecase }}
+              </mat-chip>
+          </div>
+        </div>
+      </mat-card-content>
+      
+      <mat-card-actions class="actions">
+        <button mat-flat-button color="primary" class="action-btn" [routerLink]="['/customer/edit', element.id]">
+          <mat-icon>edit</mat-icon>
+          <span>Editar</span>
+        </button>
+        
+        <button mat-flat-button color="warn" class="action-btn" (click)="deleteCustomer(element)">
+          <mat-icon>delete</mat-icon>
+          <span>Excluir</span>
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+    
+  <mat-paginator *ngIf="dataSource.data.length > 0"
+      [length]="totalItems"              
+      [pageSize]="pageSize"              
+      [pageSizeOptions]="[5, 10, 25, 50]" 
+      (page)="onPageChange($event)">
+  </mat-paginator>
+
+</div>

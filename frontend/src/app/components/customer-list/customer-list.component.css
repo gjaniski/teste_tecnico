@@ -1,0 +1,134 @@
+.list-container {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 10px;
+    background-color: white;
+    border-radius: 4px;
+}
+
+.list-header-layout {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.list-title {
+    font-size: 1.8em;
+    font-weight: 500;
+    margin: 0;
+}
+
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 0px;
+}
+
+.full-width-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-bottom: 1px solid #eee;
+}
+
+.mat-column-status, .mat-column-actions {
+    text-align: center;
+    max-width: 100px;
+}
+
+.no-customers-message {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #777;
+    padding: 30px;
+    font-size: 1.1em;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+    margin-top: 20px;
+}
+
+.no-customers-message mat-icon {
+    margin-right: 10px;
+    font-size: 1.5em;
+}
+
+.chip-elite {
+  background-color: #00BCD4 !important;
+  color: white !important;
+}
+
+.chip-prime {
+  background-color: #E91E63 !important;
+  color: white !important;
+}
+
+.chip-vip {
+  background-color: #4CAF50 !important;
+  color: white !important;
+}
+
+.chip-premium {
+  background-color: #FF9800 !important;
+  color: white !important;
+}
+
+mat-chip {
+  cursor: default !important;
+  pointer-events: none;
+}
+
+.status-chips-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+.status-chip-item {
+    padding: 0 8px;
+    height: 18px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.action-btn {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 0;
+}
+
+.action-btn mat-icon {
+  font-size: 20px;
+  margin-bottom: 4px;
+}
+
+@media (max-width: 768px) {
+  .table-container {
+    display: none;
+  }
+  .cards-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+@media (min-width: 769px) {
+  .cards-container {
+    display: none;
+  }
+  .table-container {
+    display: table;
+  }
+}

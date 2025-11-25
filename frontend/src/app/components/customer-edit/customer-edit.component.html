@@ -1,0 +1,64 @@
+<div class="form-container">
+
+  <h2 class="form-title">{{ isEditMode ? 'Editar Cliente' : 'Novo Cliente' }}</h2>
+
+  <form [formGroup]="form">
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Nome</mat-label>
+      <input matInput formControlName="name" />
+      <mat-error *ngIf="form.get('name')?.hasError('required')">
+        O nome é obrigatório.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" />
+      <mat-error *ngIf="form.get('email')?.hasError('required')">
+        O email é obrigatório.
+      </mat-error>
+      <mat-error *ngIf="form.get('email')?.hasError('email')">
+        Email inválido.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Status</mat-label>
+      
+      <mat-select 
+        formControlName="status" 
+        [multiple]="true" 
+        [compareWith]="compareStatus">
+        
+        <mat-option *ngFor="let status of statusList" [value]="status">
+          {{ status.name | titlecase }}
+        </mat-option>
+        
+      </mat-select>
+    </mat-form-field>
+
+    <div class="button-group">
+      
+      <button 
+        mat-stroked-button 
+        color="basic" 
+        type="button" 
+        (click)="returnToList()" 
+        class="cancel-button">
+        Cancelar
+      </button>
+
+      <button 
+        mat-flat-button 
+        color="primary" 
+        (click)="save()" 
+        [disabled]="form.invalid"
+        class="save-button">
+        {{ isEditMode ? 'Salvar Alterações' : 'Cadastrar' }}
+      </button>
+
+    </div>
+
+  </form>
+</div>

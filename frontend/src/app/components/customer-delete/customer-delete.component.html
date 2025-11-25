@@ -1,0 +1,7 @@
+<h2 mat-dialog-title>Deseja realmente excluir o cliente {{ data.name }} ?</h2>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close class="cancel-button">Cancelar</button>
+  
+  <button mat-raised-button color="warn" (click)="deleteCustomer()" mat-dialog-close>Excluir</button>
+</mat-dialog-actions>
